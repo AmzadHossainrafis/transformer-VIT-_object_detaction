@@ -49,3 +49,5 @@ def read_yaml(path='config.yaml'):
     with open(path, 'r') as stream:
         data_loaded = yaml.load(stream, Loader=yaml.FullLoader)
     return data_loaded
+
+
