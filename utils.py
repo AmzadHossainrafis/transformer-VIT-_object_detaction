@@ -51,3 +51,4 @@ def read_yaml(path='config.yaml'):
     return data_loaded
 
 
+config= read_yaml()
