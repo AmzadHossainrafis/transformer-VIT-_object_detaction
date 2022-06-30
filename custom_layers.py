@@ -1,7 +1,7 @@
 from tensorflow import keras
 from tensorflow.keras import layers
 import tensorflow as tf
-
+from utils import config
 
 
 #data augmentation sequence
@@ -20,7 +20,15 @@ data_augmentation = keras.Sequential(
 
 #impliment a custom layer for patch creation    
 class Patches(layers.Layer):
-    def __init__(self, patch_size):
+    """
+    its a layer that takes in a batch of images and returns 
+    a batch of patches of given size
+    
+    returns: patches
+
+    """
+
+    def __init__(self, patch_size=config["patch_size"]):
         super(Patches, self).__init__()
         self.patch_size = patch_size
 
@@ -40,6 +48,11 @@ class Patches(layers.Layer):
 
 
 class PatchEncoder(layers.Layer):
+    """
+     add ancoding in every patch of images 
+     returen : encoded patch 
+    
+    """
     def __init__(self, num_patches, projection_dim):
         super(PatchEncoder, self).__init__()
         self.num_patches = num_patches
@@ -50,8 +63,8 @@ class PatchEncoder(layers.Layer):
 
     def call(self, patch):
         positions = tf.range(start=0, limit=self.num_patches, delta=1)
-        encoded = self.p
-        
+        encoded = self.projection(patch) + self.position_embedding(positions)
+        return encoded
 
 def mlp(x, hidden_units, dropout_rate):
     for units in hidden_units:
