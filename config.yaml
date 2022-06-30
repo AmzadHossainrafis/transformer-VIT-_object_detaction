@@ -1,15 +1,39 @@
 path_images : "/101_ObjectCategories/airplanes/"
 path_annot : "/Annotations/Airplanes_Side_2/"
+csv_dir : .\logs\csv_logs
+csv_file : airplanes_side_2.csv
+check_dir : .\logs\checkpoint\
+check_file : airplanes_side_2.h5
+
 image_size : 224 
 
 input_shape :
+  - 224
+  - 224
   - 3
-  - 224
-  - 224
-patch_size :
+patch_size :  32 
 num_patches :
-projection_dim :
-num_heads :
-transformer_units:
-transformer_layersmlp_head_units :
+projection_dim : 64
+num_heads : 4
+transformer_units: 
+transformer_layer: 4
+smlp_head_units :
 
+learning_rate : 0.001
+weight_decay : 0.0001
+mlp_head_units :
+  - 2048
+  - 1024 
+  - 512 
+  - 64 
+  - 32
+
+batch_size : 32
+num_epochs : 100
+history : []
+transformer_units : 
+  - ${projection_dim}
+  - ${projection_dim}
+
+
+...
