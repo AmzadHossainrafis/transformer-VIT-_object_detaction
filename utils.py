@@ -1,6 +1,7 @@
 import shutil
 import keras
 import os
+import yaml
 
 path_images = "/101_ObjectCategories/airplanes/"
 path_annot = "/Annotations/Airplanes_Side_2/"
@@ -39,12 +40,12 @@ def Download_data():
     return image_paths.sort(),annot_paths.sort()
 
 
-    def read_yaml(path='config.yaml'):
-        """
-        Reads the yaml file and returns the data in a dictionary.
-        :param path: The path to the yaml file.
-        :return: The data in the yaml file.
-        """
-        with open(path, 'r') as stream:
-            data_loaded = yaml.load(stream, Loader=yaml.FullLoader)
-        return data_loaded
+def read_yaml(path='config.yaml'):
+    """
+    Reads the yaml file and returns the data in a dictionary.
+    :param path: The path to the yaml file.
+    :return: The data in the yaml file.
+    """
+    with open(path, 'r') as stream:
+        data_loaded = yaml.load(stream, Loader=yaml.FullLoader)
+    return data_loaded
