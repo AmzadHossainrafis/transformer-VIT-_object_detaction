@@ -1,13 +1,13 @@
-path_images : "/101_ObjectCategories/airplanes/"
-path_annot : "/Annotations/Airplanes_Side_2/"
-path_images : "/101_ObjectCategories/airplanes/"
-path_annot : "/Annotations/Airplanes_Side_2/"
+
+data_dir : B:\keras_project_2\data\
+path_images : B:\keras_project_2\data\101_ObjectCategories\airplanes\
+path_annot : B:\keras_project_2\data\Annotations\Airplanes_Side_2\
+
 
 csv_dir : .\logs\csv_logs
 csv_file : airplanes_side_2.csv
 check_dir : .\logs\checkpoint\
 check_file : airplanes_side_2.h5
-
 
 image_size : 224 
 
