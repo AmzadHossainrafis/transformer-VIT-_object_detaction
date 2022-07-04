@@ -16,13 +16,13 @@ input_shape :
   - 224
   - 3
 patch_size :  32 
-num_patches :
 projection_dim : 64
 num_heads : 4
 transformer_units: 
-transformer_layer: 4
-smlp_head_units :
+  - 128
+  - 64
 
+transformer_layers: 4
 learning_rate : 0.001
 weight_decay : 0.0001
 mlp_head_units :
@@ -36,8 +36,8 @@ batch_size : 32
 num_epochs : 100
 history : []
 transformer_units : 
-  - ${projection_dim}
-  - ${projection_dim}
+  - 64
+  - 64
 
 
 ...
