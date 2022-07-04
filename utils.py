@@ -3,6 +3,7 @@ import yaml
 import numpy as np
 import scipy.io
 import tensorflow as tf
+import matplotlib.pyplot as plt
 
 def read_yaml(path='config.yaml'):
     """
@@ -58,29 +59,27 @@ def data_preproses():
         if i < int(len(annot_paths) * 0.8):
             # resize image if it is for training dataset
             image = image.resize((image_size, image_size))
-
+        
         # convert image to array and append to list
-        images.append(tf.keras.utils.img_to_array(image))
+        images.append(np.array(image).astype(np.uint8))
 
         # apply relative scaling to bounding boxes as per given image and append to list
         targets.append(
-            (
+            [
                 float(top_left_x) / w,
                 float(top_left_y) / h,
                 float(bottom_right_x) / w,
                 float(bottom_right_y) / h,
-            )
+            ]
         )
 
-    (x_train), (y_train) = (
-        np.asarray(images[: int(len(images) * 0.8)]),
-        np.asarray(targets[: int(len(targets) * 0.8)]),
-    )
-    (x_test), (y_test) = (
-        np.asarray(images[int(len(images) * 0.8) :]),
-        np.asarray(targets[int(len(targets) * 0.8) :]),
+    x_train = images[: int(len(images) * 0.8)]
+    y_train= targets[: int(len(targets) * 0.8)]
+    
+    x_test = images[int(len(images) * 0.8) :]
+    y_test= targets[int(len(targets) * 0.8) :]
 
-    )
+    
     return x_train, y_train, x_test, y_test
 
-m,n,o,p=data_preproses()
+x_train, y_train, x_test, y_test= data_preproses()
