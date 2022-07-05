@@ -4,7 +4,7 @@ path_images : B:\keras_project_2\data\101_ObjectCategories\airplanes\
 path_annot : B:\keras_project_2\data\Annotations\Airplanes_Side_2\
 
 
-csv_dir : .\logs\csv_logs
+csv_dir : .\logs\csv_logs\
 csv_file : airplanes_side_2.csv
 check_dir : .\logs\checkpoint\
 check_file : airplanes_side_2.h5
@@ -33,7 +33,7 @@ mlp_head_units :
   - 32
 
 batch_size : 32
-num_epochs : 100
+epochs : 100
 history : []
 transformer_units : 
   - 64
