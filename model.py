@@ -47,6 +47,3 @@ def Vit_model(config=config):
 
     # return Keras model.
     return keras.Model(inputs=inputs, outputs=bounding_box)
-
-model=Vit_model()
-model.summary()
