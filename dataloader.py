@@ -1,5 +1,4 @@
-from utils import  config ,data_preproses
-import tensorflow as tf 
+
 from tensorflow.keras.utils import Sequence
 import math
 import numpy as np
@@ -24,17 +23,6 @@ class Dataloader(Sequence):
             x.append(img_batch[i])
             y.append(label_batch[i] )
         #return img_batch ,label_batch 
-        return tf.convert_to_tensor(x),tf.convert_to_tensor(y) 
+        return np.asarray(x,dtype=float), np.array(y)
 
         
-        
-if __name__ == '__main__':
-    x_train, y_train, x_test, y_test= data_preproses()
-    dataloader=Dataloader(batch_size=256,train_data=x_train,labels=y_train)
-    data=dataloader[0]
-    print(data[0].shape)
-    print(data[1].shape)
-    #print(len(dataloader[1]))
-
-# import matplotlib.pyplot as plt
-# plt.imshow(data[0][0])
