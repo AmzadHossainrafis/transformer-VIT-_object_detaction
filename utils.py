@@ -65,12 +65,12 @@ def data_preproses():
 
         # apply relative scaling to bounding boxes as per given image and append to list
         targets.append(
-            [
+            (
                 float(top_left_x) / w,
                 float(top_left_y) / h,
                 float(bottom_right_x) / w,
                 float(bottom_right_y) / h,
-            ]
+            )
         )
 
     x_train = images[: int(len(images) * 0.8)]

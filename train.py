@@ -2,6 +2,7 @@ from utils import config ,x_train,y_train,x_test,y_test
 from model import Vit_model 
 from dataloader import Dataloader
 import tensorflow as tf
+import numpy as np
 
 import tensorflow_addons as tfa
 
@@ -25,6 +26,9 @@ callbacks=[tf.keras.callbacks.ModelCheckpoint(
         save_weights_only=True,
     )]
 model.compile(optimizer=optimizer, loss="mse")
+X_train=np.array(x_train).astype("float32")
+Y_train=np.array(y_train)
+history=model.fit(X_train,Y_train,epochs=config['epochs'],validation_split=0.1,callbacks=callbacks)
 
-model.fit(train_ds,epochs=config['epochs'],callbacks=callbacks,validation_data=val_ds)
+
 
