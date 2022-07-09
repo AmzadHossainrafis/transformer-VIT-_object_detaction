@@ -56,9 +56,9 @@ def data_preproses():
         (w, h) = image.size[:2]
 
         # resize train set images
-        if i < int(len(annot_paths) * 0.8):
-            # resize image if it is for training dataset
-            image = image.resize((image_size, image_size))
+        # if i < int(len(annot_paths) * 0.8):
+        #     # resize image if it is for training dataset
+        image = image.resize((image_size, image_size))
         
         # convert image to array and append to list
         images.append(np.array(image).astype(np.uint8))
