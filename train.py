@@ -2,18 +2,14 @@ from utils import config ,x_train,y_train,x_test,y_test
 from model import Vit_model 
 from dataloader import Dataloader
 import tensorflow as tf
-import numpy as np
-
+#import numpy as np
 import tensorflow_addons as tfa
-
 from tensorflow.keras.callbacks import ModelCheckpoint, CSVLogger
 
 
 
 train_ds=Dataloader(batch_size=32,train_data=x_train,labels=y_train)
 val_ds=Dataloader(batch_size=32,train_data=x_test,labels=y_test)
-
-
 
 model=Vit_model()
 optimizer = tfa.optimizers.AdamW(
@@ -26,9 +22,10 @@ callbacks=[tf.keras.callbacks.ModelCheckpoint(
         save_weights_only=True,
     )]
 model.compile(optimizer=optimizer, loss="mse")
-X_train=np.array(x_train).astype("float32")
-Y_train=np.array(y_train)
-history=model.fit(X_train,Y_train,epochs=config['epochs'],validation_split=0.1,callbacks=callbacks)
+train_ds=Dataloader(batch_size=32,train_data=x_train,labels=y_train)
+val_ds=Dataloader(batch_size=32,train_data=x_test,labels=y_test)
+model.fit(train_ds,epochs=config['epochs'],validation_data=val_ds,callbacks=callbacks)
 
-
-
+# X_train=np.array(x_train).astype("float32")
+# Y_train=np.array(y_train)
+# history=model.fit(X_train,Y_train,epochs=config['epochs'],validation_split=0.1,callbacks=callbacks) # working fine 
