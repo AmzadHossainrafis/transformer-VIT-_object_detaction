@@ -21,4 +21,4 @@ There are mainly 3 part in transformer
  
 images are divided into small patches then the patches are embedded and passed to the encoder 
 
-<p aline='center'>![image info](./logs/VIT.png)<\p>
+![image info](./logs/VIT.png)
