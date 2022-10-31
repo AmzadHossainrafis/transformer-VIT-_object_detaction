@@ -20,3 +20,5 @@ There are mainly 3 part in transformer
 3. The Decoder:The decoder is responsible for taking the features that have been extracted by the encoder and reconstructing the original image. The decoder is typically a deconvolutional neural network (DECONV).
  
 images are divided into small patches then the patches are embedded and passed to the encoder 
+
+<p aline='center'>![image info](./logs/VIT.png)<\p>
