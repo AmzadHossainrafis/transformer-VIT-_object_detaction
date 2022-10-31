@@ -22,3 +22,12 @@ There are mainly 3 part in transformer
 images are divided into small patches then the patches are embedded and passed to the encoder 
 
 ![image info](./logs/VIT.png)
+
+
+# train 
+1. before traning download the CFAR100 data set 
+
+
+ python train.py
+ 
+will start the traning process 
